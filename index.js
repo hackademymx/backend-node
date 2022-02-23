@@ -9,9 +9,9 @@ const port = 5000;
 
 const app = express();
 
-app.use(morgan("dev"));
-app.use(cors());
-app.use(express.json());
+app.use(morgan("dev")); //Visualizar logs de las peticiones entrantes.
+app.use(cors()); //Activar los CORS por default.
+app.use(express.json()); //Permitir que nuestra API pueda leer formato JSON.
 
 /* Ruta de ejemplo */
 app.get("/", (req, res) => {
