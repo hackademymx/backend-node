@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+  postgres:
+    image: 'postgres:12.2'
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=user-node
+      - POSTGRES_DB=my-test
+      - POSTGRES_PASSWORD=password321
+    volumes:
+      - 'pgdata-backend:/var/lib/postgresql/data'
+
+  api:
+    depends_on:
+      - postgres
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/app/node_app
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - notused:/app/node_modules
+    environment:
+      - PORT=5000
+      - DB_USER=user-node
+      - DB_HOST=postgres
+      - DB_NAME=my-test
+      - DB_PASSWORD=password321
+      - DB_PORT=5432
+      - DB_SSL=false
+      - DB_DIALECT=postgres
+      - ENV=development
+
+volumes:
+  pgdata-backend: {}
+  notused: {}
