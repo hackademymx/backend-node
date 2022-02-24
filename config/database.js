@@ -1,4 +1,4 @@
-/*const Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const {
   PG_DATABASE,
   PG_DIALECT,
@@ -15,4 +15,3 @@ const sequelize = new Sequelize(PG_DATABASE, PG_USER, PG_PASSWORD, {
 });
 
 module.exports = sequelize;
-*/

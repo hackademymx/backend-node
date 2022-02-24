@@ -1,4 +1,4 @@
-//const models = require("../../database/models");
+const models = require("../../database/models");
 
 /* Obtener todos los usuarios */
 const getUsers = async (req, res) => {
@@ -8,7 +8,13 @@ const getUsers = async (req, res) => {
     const limit = !pageSize ? 10 : pageSize; // El limite de usuarios totales que retornará.
     const offset = !page ? 0 : page; // Posición de la página, paginación.
 
-    const users = "";
+    const users = await models.users.findAll({
+      where: {
+        status: true,
+      },
+      limit: limit,
+      offset: offset,
+    });
 
     return res.status(200).send({
       msg: "Users found successfully",
@@ -24,7 +30,14 @@ const getUserById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = "";
+    const user = await models.users.findOne({
+      where: {
+        id: id,
+        status: true,
+      },
+    });
+
+    if (!user) return res.status(401).send("User does not exist");
 
     return res.status(200).send({
       msg: "User found successfully",
@@ -40,7 +53,12 @@ const createUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
-    const newUser = "";
+    const newUser = await models.users.create({
+      name,
+      email,
+      password,
+      role,
+    });
 
     return res.status(201).send({
       msg: "User created successfully",
@@ -56,7 +74,16 @@ const updateUser = async (req, res) => {
   try {
     const { body, params } = req;
 
-    const user = "";
+    const user = await models.users.findOne({
+      where: {
+        id: params.id,
+        status: true,
+      },
+    });
+
+    if (!user) return res.status(401).send("User does not exist");
+
+    // Actualizarlo ->
 
     return res.status(201).send({
       msg: "User updated successfully",
@@ -72,7 +99,16 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = "";
+    const user = await models.users.findOne({
+      where: {
+        id: id,
+        status: true,
+      },
+    });
+
+    if (!user) return res.status(401).send("User does not exist");
+
+    // Eliminarlo ->
 
     return res.status(200).send("User deleted successfully");
   } catch (error) {
