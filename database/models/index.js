@@ -13,6 +13,9 @@ const {
 } = require("../../config/config");
 const db = {};
 
+// Este archivo se encarga de recorrer cada uno de los modelos existentes en la carpeta "models"
+// Y al momento de recorrerlos, los almacena en la const db, que se declaró arriba.
+
 const sequelize = new Sequelize(PG_DATABASE, PG_USER, PG_PASSWORD, {
   host: PG_HOST,
   dialect: PG_DIALECT,

@@ -32,7 +32,7 @@ db.authenticate()
   .catch((err) => console.log("Error DB => ", err));
 
 // Servidor escuchando con la base de datos
-//Sincroniza los esquemas (creados en la carpeta models) para crearse
+//El metodo "sync" sincroniza los esquemas (creados en la carpeta models) para crearse
 db.sync({ force: false }).then(async () => {
   app.listen(PORT, () => {
     console.log("Server listening at port: " + PORT);
