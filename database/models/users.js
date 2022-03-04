@@ -1,3 +1,6 @@
+// El models de "users" es un esquema más sencillo de cómo está formado nuestra entidad de "users".
+// Aquí también se especifican las asociaciones (FOREIGN KEY) <- Las veremos en futuras mentorias.
+
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {

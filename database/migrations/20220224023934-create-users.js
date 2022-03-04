@@ -1,3 +1,7 @@
+// La migración de "users" al momento de ser ejecutada desde la terminal (entrando al contenedor de nodejs), se estaría
+// renderizando los cambios/movimientos a nuestra base de datos.
+// Cada movimiento, manipulación, cambio a nuestra base de datos (crear tabla, modificar columnas), se realizan con migraciones.
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("users", {

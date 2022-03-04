@@ -9,6 +9,8 @@ const {
   PG_SSL,
 } = require("./config");
 
+// Instanciamos a la clase Sequelize, para poder heredar y tener todos sus métodos/funciones.
+// luego exportamos a la constante sequelize ->
 const sequelize = new Sequelize(PG_DATABASE, PG_USER, PG_PASSWORD, {
   host: PG_HOST,
   dialect: PG_DIALECT,
