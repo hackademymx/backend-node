@@ -84,3 +84,11 @@ docker-compose up
 
 ¡Ojo! Si ocurre algún error al intentar ejecutar los comandos de sequelize en la terminal, agregar al inicio:
 `npx`
+
+## Migraciones llevadas a cabo en las mentorias:
+- npx sequelize model:create --name users --attributes name:string,email:string,password:string,status:boolean,role:enum
+- npx sequelize model:create --name products --attributes name:string,description:text,price:integer,stock:integer,status:boolean,categoryId:integer
+- npx sequelize model:create --name categories --attributes name:string,label:text,status:boolean
+- npx sequelize model:create --name customers --attributes userId:integer,money:integer,status:boolean
+- npx sequelize model:create --name productCustomers --attributes productId:integer,customerId:integer,status:boolean
+- npx sequelize migration:generate --name add-address-in-users
