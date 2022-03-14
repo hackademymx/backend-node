@@ -85,7 +85,20 @@ docker-compose up
 ¡Ojo! Si ocurre algún error al intentar ejecutar los comandos de sequelize en la terminal, agregar al inicio:
 `npx`
 
-## Migraciones llevadas a cabo en las mentorias:
+## Pasos para correr migraciones de Sequelize (Con Docker):
+- Levantamos nuestros contenedores con el comando: ```docker-compose up```
+- Abrimos otra terminal, y escribimos: ```docker ps```
+- Les aparecerá información de 1 o más servicios, buscamos y copiamos el CONTAINER ID del servicio de NodeJs. 
+- Ingresamos al contenedor del servicio de Nodejs, con el siguiente comando: ```docker exec -ti -u root CONTAINER_ID /bin/bash```  
+  - Reemplazamos la palabra CONTAINER_ID por el ID que copiamos
+- Estando adentro del contenedor, ejecutaremos las migraciones (comandos) de abajo.
+- Chequen sus carpetas de Models y Migrations, y tendrán archivos nuevos.
+- Hagan los cambios que requieran hacer en esos archivos generados.
+- Hagan sus respectivas "Entidades-Relación". (1:1, 1:N, N:M)
+- Cuando ya todo esté listo, ejecutamos en la terminal del contenedor: ```npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"```
+  - Reemplazamos las variables DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME por los valores que tienen en sus variables de entorno de su docker-compose.
+
+## Migraciones (comandos) llevadas a cabo en las mentorias:
 - npx sequelize model:create --name users --attributes name:string,email:string,password:string,status:boolean,role:enum
 - npx sequelize model:create --name products --attributes name:string,description:text,price:integer,stock:integer,status:boolean,categoryId:integer
 - npx sequelize model:create --name categories --attributes name:string,label:text,status:boolean
