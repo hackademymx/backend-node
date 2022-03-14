@@ -95,13 +95,20 @@ docker-compose up
 - Chequen sus carpetas de Models y Migrations, y tendrán archivos nuevos.
 - Hagan los cambios que requieran hacer en esos archivos generados.
 - Hagan sus respectivas "Entidades-Relación". (1:1, 1:N, N:M)
-- Cuando ya todo esté listo, ejecutamos en la terminal del contenedor: ```npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"```
+- Cuando ya todo esté listo, ejecutamos en la terminal del contenedor: 
+```npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"```
   - Reemplazamos las variables DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME por los valores que tienen en sus variables de entorno de su docker-compose.
 
 ## Migraciones (comandos) llevadas a cabo en las mentorias:
+
+### Para crear los modelos:
+
 - npx sequelize model:create --name users --attributes name:string,email:string,password:string,status:boolean,role:enum
 - npx sequelize model:create --name products --attributes name:string,description:text,price:integer,stock:integer,status:boolean,categoryId:integer
 - npx sequelize model:create --name categories --attributes name:string,label:text,status:boolean
 - npx sequelize model:create --name customers --attributes userId:integer,money:integer,status:boolean
 - npx sequelize model:create --name productCustomers --attributes productId:integer,customerId:integer,status:boolean
-- npx sequelize migration:generate --name add-address-in-users
+
+### Para agregar nuevos campos a una tabla:
+
+- npx sequelize migration:generate --name add-field-address-in-users
