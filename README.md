@@ -58,6 +58,7 @@ docker-compose up
 
 - Sequelize Main: https://sequelize.org/master
 - Sequelize Migraciones: https://sequelize.org/master/manual/migrations.html
+- Sequelize Migraciones: https://sequelize.org/v3/docs/migrations/
 - Sequelize-cli: https://www.npmjs.com/package/sequelize-cli
 
 ## Comandos de Sequelize
@@ -114,3 +115,4 @@ npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/D
 ### Para agregar nuevos campos a una tabla:
 
 - npx sequelize migration:generate --name add-field-address-in-users
+  - En este comando, queremos agregar el campo "address" al modelo users.
