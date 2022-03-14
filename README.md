@@ -101,6 +101,8 @@ docker-compose up
 npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"
 ```
   - Reemplazamos las variables DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME por los valores que tienen en sus variables de entorno de su docker-compose.
+- Terminando de ejecutarse el comando, vamos a nuestra base de datos para comprobar que los cambios (migraciones) se han realizado.
+- Vamos a nuestra terminal del contenedor y escribimos: ```exit```
 
 ## Migraciones (comandos) llevadas a cabo en las mentorias:
 
