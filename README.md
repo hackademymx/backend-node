@@ -96,7 +96,9 @@ docker-compose up
 - Hagan los cambios que requieran hacer en esos archivos generados.
 - Hagan sus respectivas "Entidades-Relación". (1:1, 1:N, N:M)
 - Cuando ya todo esté listo, ejecutamos en la terminal del contenedor: 
-```npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"```
+```
+npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME"
+```
   - Reemplazamos las variables DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME por los valores que tienen en sus variables de entorno de su docker-compose.
 
 ## Migraciones (comandos) llevadas a cabo en las mentorias:
