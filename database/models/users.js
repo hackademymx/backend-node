@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     static associate(models) {
       // define association here
-      //users.hasOne(models.customers);
+      users.hasOne(models.customers);
     }
   }
   users.init(

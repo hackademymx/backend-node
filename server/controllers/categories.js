@@ -1,4 +1,4 @@
-//const models = require("../../database/models");
+const models = require("../../database/models");
 
 /* Obtener todas las categorias */
 const getCategories = async (req, res) => {

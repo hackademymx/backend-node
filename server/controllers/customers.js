@@ -1,4 +1,4 @@
-//const models = require("../../database/models");
+const models = require("../../database/models");
 
 /* Obtener todos los clientes */
 const getCustomers = async (req, res) => {

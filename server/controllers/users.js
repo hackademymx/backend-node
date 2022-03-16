@@ -205,17 +205,40 @@ const deleteUser = async (req, res) => {
 };
 
 /* Iniciar sesión con un usuario */
+/* Autenticación */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = "";
+    const user = await models.users.findOne({
+      where: {
+        email: email,
+        status: true,
+      },
+      attributes: ["id", "name", "email", "password", "role"],
+    });
 
-    //bcrypt.compareSync(password, user.password); <- Lo continuamos en la sig. mentoria
+    if (!user) {
+      return res.status(401).send("Email does not exist");
+    }
+
+    const match = await bcrypt.compareSync(password, user.password);
+    console.log(match);
+
+    if (match === false) {
+      return res.status(401).send("Password does not match");
+    }
+
+    const payload = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
 
     return res.status(200).send({
       msg: "User logged successfully",
-      data: user,
+      data: payload,
     });
   } catch (error) {
     return res.status(404).send(error.message);
@@ -228,4 +251,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  login,
 };
