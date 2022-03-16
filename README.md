@@ -106,6 +106,8 @@ npx sequelize db:migrate --url "postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/D
 
 ## Migraciones (comandos) llevadas a cabo en las mentorias:
 
+### PD: Si es la primera vez que vas a crear tus modelos y migraciones, copia y pega cada uno de los comandos de abajo. Pero, si anteriormente ya has ejecutado algunas migraciones en el proyecto, comprueba cuáles ya ejecutaste y cuáles no, para que así no hagas migraciones "duplicadas/repetidas", y así nada más ejecutes migraciones nuevas.
+
 ### Para crear los modelos:
 
 - npx sequelize model:create --name users --attributes name:string,email:string,password:string,status:boolean,role:enum
